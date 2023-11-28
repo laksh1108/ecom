@@ -25,7 +25,7 @@ import { useNavigate } from 'react-router-dom';
   
   const getHandlder=async()=>{
     try{
-      const res= await fetch(`https://crudcrud.com/api/a942991cd72e48e6802d8231fce8d6f2/${updated}`)
+      const res= await fetch(`https://crudcrud.com/api/bd96eed4b7c44b70989a2db13d20d491/${updated}`)
       const data= await res.json()
   
       setCartItems(data)  ;
@@ -39,7 +39,7 @@ import { useNavigate } from 'react-router-dom';
   const remover=async(id)=>{
   
     try{
-      const res= await fetch(`https://crudcrud.com/api/a942991cd72e48e6802d8231fce8d6f2/${updated}/${id}`,{
+      const res= await fetch(`https://crudcrud.com/api/bd96eed4b7c44b70989a2db13d20d491/${updated}/${id}`,{
         method: "DELETE",
       })
       setCartItems((prev) => prev.filter((item)=>item._id !== id))

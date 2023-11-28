@@ -37,7 +37,7 @@ function App() {
       const email=localStorage.getItem('email')
       console.log(email)
       const updated=email.replace('@gmail.com', '');
-      const res= await fetch(`https://crudcrud.com/api/a942991cd72e48e6802d8231fce8d6f2/${updated}`)
+      const res= await fetch(`https://crudcrud.com/api/bd96eed4b7c44b70989a2db13d20d491/${updated}`)
       const data= await res.json()
       count(data)   
     }catch(err){
@@ -97,10 +97,10 @@ function App() {
         <Route path='/profile' element={
           <>
            {authCtx.isLoggedIn && <UserProfile />}
-           {!authCtx.isLoggedIn &&  <AuthPage getHandlder={getHandlder}/>}
+           {!authCtx.isLoggedIn &&  <AuthPage />}
           </>
         }/>
-         {!authCtx.isLoggedIn&&<Route path='/auth' element={<AuthPage />} />}
+         {!authCtx.isLoggedIn&&<Route path='/auth' element={<AuthPage getHandlder={getHandlder} />} />}
         <Route path="/list" element={<List/>}/>
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
