@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
     <AuthContextProvider>
-      <BrowserRouter basename='/ecom'>
+      <BrowserRouter >
         <App />
       </BrowserRouter>
     </AuthContextProvider> 
