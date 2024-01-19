@@ -16,12 +16,12 @@ const ProductItem = (props) => {
     const fetchHandler=async()=>{ 
       setCartBump(true); 
       try{
-      const res= await fetch(`https://crudcrud.com/api/bd96eed4b7c44b70989a2db13d20d491/${updated}`,{
+      const res= await fetch(`https://crudcrud.com/api/2996d53d1214428597f2a145e0008b57/${updated}`,{
         method: "POST",
         body: JSON.stringify(items),
         headers:{'Content-Type':'application/json'}
       })
-      props.getHandlder()
+      props.getHandler()
       
       }catch(err){
         console.log(err.message)

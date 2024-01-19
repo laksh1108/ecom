@@ -44,7 +44,7 @@ const AuthForm = (props) => {
         const data = await res.json() 
         authCtx.login(data.idToken)
         localStorage.setItem('email',data.email)
-        props.getHandler()
+        
         history('/')
       }else{
         const data = await res.json()      

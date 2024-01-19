@@ -2,54 +2,51 @@ import React, { useEffect, useState } from 'react'
 import { Offcanvas,Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
- const Cart = (props) => {
-  const [cartItems,setCartItems]=useState([]);
-  const [total,setTotal]=useState(0)
-  const navigate=useNavigate()
- 
-  const [cart,setCart]=useState(false)
- 
-  const email=localStorage.getItem('email')
-  const updated=email.replace('@gmail.com', '');
+const Cart = (props) => {
+  const [cartItems, setCartItems] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [cart, setCart] = useState(false);
+  const navigate = useNavigate();
 
-  useEffect(()=>{
-    getHandlder()
-    setCart(true)
-  },[])
+  const email = localStorage.getItem('email');
+  const updated = email.replace('@gmail.com', '');
 
-  const handleClose=()=>{
-    setCart(false)
-    navigate('/list')
-  }
 
-  
-  const getHandlder=async()=>{
-    try{
-      const res= await fetch(`https://crudcrud.com/api/bd96eed4b7c44b70989a2db13d20d491/${updated}`)
-      const data= await res.json()
-  
-      setCartItems(data)  ;
-      const count= data.reduce((acc,item)=>acc+ item.quantity*item.price,0);
-      setTotal(count)
-     
-     }catch(err){
-       console.log(err.message)
-     }
-  }
-  const remover=async(id)=>{
-  
-    try{
-      const res= await fetch(`https://crudcrud.com/api/bd96eed4b7c44b70989a2db13d20d491/${updated}/${id}`,{
-        method: "DELETE",
-      })
-      setCartItems((prev) => prev.filter((item)=>item._id !== id))
-      const count = cartItems.reduce((acc,item)=> acc + item.quantity*item.price,0);
-      setTotal(count)
-      props.getHandlder()
-      }catch(err){
-        console.log(err.message)
+  const remover = async (id) => {
+    try {
+      await fetch(`https://crudcrud.com/api/2996d53d1214428597f2a145e0008b57/${updated}/${id}`, {
+        method: 'DELETE',
+      });
+      setCartItems((prev) => prev.filter((item) => item._id !== id));
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`https://crudcrud.com/api/2996d53d1214428597f2a145e0008b57/${updated}`);
+        const data = await res.json();
+        setCartItems(data);
+        const count = data.reduce((acc, item) => acc + item.quantity * item.price, 0);
+        setTotal(count);
+      } catch (err) {
+        console.log(err.message);
       }
-  }
+    };
+
+    fetchData();
+    setCart(true);
+  }, [remover]);
+
+  const handleClose = () => {
+    setCart(false);
+    navigate('/list');
+  };
+
+  
+
 
   return (
     <>

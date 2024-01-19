@@ -32,12 +32,12 @@ function App() {
   //   const updated=email.replace('@gmail.com', '');
   // }
 
-  const getHandlder=async()=>{
+  const getHandler=async()=>{
     try{
       const email=localStorage.getItem('email')
       console.log(email)
       const updated=email.replace('@gmail.com', '');
-      const res= await fetch(`https://crudcrud.com/api/bd96eed4b7c44b70989a2db13d20d491/${updated}`)
+      const res= await fetch(`https://crudcrud.com/api/2996d53d1214428597f2a145e0008b57/${updated}`)
       const data= await res.json()
       count(data)   
     }catch(err){
@@ -46,8 +46,8 @@ function App() {
   }
     
   useEffect(()=>{
-    getHandlder()
-  },[getHandlder])
+    getHandler()
+  },[getHandler])
 
 
   // const addHandler = (id) => {
@@ -92,7 +92,7 @@ function App() {
           </>}/>
         <Route>
             <Route path="/list"element={<List />}/>
-            <Route path='/list/:id' element={<ProductItem getHandlder={getHandlder} />}/>
+            <Route path='/list/:id' element={<ProductItem getHandler={getHandler} />}/>
         </Route>
         <Route path='/profile' element={
           <>
@@ -100,11 +100,11 @@ function App() {
            {!authCtx.isLoggedIn &&  <AuthPage />}
           </>
         }/>
-         {!authCtx.isLoggedIn&&<Route path='/auth' element={<AuthPage getHandlder={getHandlder} />} />}
+         {!authCtx.isLoggedIn&&<Route path='/auth' element={<AuthPage getHandler={getHandler} />} />}
         <Route path="/list" element={<List/>}/>
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path='/cart' element={<Cart  getHandlder={getHandlder}/>}/>
+        <Route path='/cart' element={<Cart  getHandler={getHandler}/>}/>
          
       </Routes>
     </Layout>
