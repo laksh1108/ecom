@@ -11,7 +11,15 @@ a {
   color: #007185;
   text-decoration: none;
 }
+input {
+  border: none;
+  border-bottom: 2px solid gray;
+  outline: none;
+}
 
+input.focused {
+  border-color: blue; 
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

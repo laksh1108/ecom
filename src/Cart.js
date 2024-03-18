@@ -14,7 +14,7 @@ const Cart = (props) => {
 
   const remover = async (id) => {
     try {
-      await fetch(`https://crudcrud.com/api/2996d53d1214428597f2a145e0008b57/${updated}/${id}`, {
+      await fetch(`https://crudcrud.com/api/7aa15b73edde4e49a9dfcce70c22802f/${updated}/${id}`, {
         method: 'DELETE',
       });
       setCartItems((prev) => prev.filter((item) => item._id !== id));
@@ -26,7 +26,7 @@ const Cart = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`https://crudcrud.com/api/2996d53d1214428597f2a145e0008b57/${updated}`);
+        const res = await fetch(`https://crudcrud.com/api/7aa15b73edde4e49a9dfcce70c22802f/${updated}`);
         const data = await res.json();
         setCartItems(data);
         const count = data.reduce((acc, item) => acc + item.quantity * item.price, 0);
@@ -35,7 +35,6 @@ const Cart = (props) => {
         console.log(err.message);
       }
     };
-
     fetchData();
     setCart(true);
   }, [remover]);

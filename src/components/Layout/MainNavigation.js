@@ -21,7 +21,7 @@ const MainNavigation = () => {
   return (
     <header className={classes.header}>
       <Link to='/'>
-        <div className={classes.logo}>E-COMMERCE</div>
+        <div className={classes.logo}>MineCart</div>
       </Link>
       <nav>
         <ul>
